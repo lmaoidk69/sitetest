@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mountain Game Games</title>
+<link rel="shortcut icon" type="image/jpg" href="mountainNoFade.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.overlay{
+opacity:0.9;
+background-color:white;
+position:fixed;
+width:100%;
+height:100%;
+top:0px;
+left:0px;
+z-index:1000;
+display: block;
+}
+
+.container {
+position: relative;
+width: 100%;
+max-width: 160px;
+margin: 10px;
+padding: 1px;
+float:left;
+height: 160px;
+}
+
+.container img {
+width: 100%;
+height: auto;
+border-radius: 20px;
+filter: drop-shadow(2.5px 2.5px 2.5px #000);
+}
+
+.container .btn {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+background-color: white;
+color: white;
+font-size: 16px;
+padding: 12px 24px;
+border: none;
+border-radius: 5px;
+text-align: center;
+}
+
+.container a:hover {
+font-weight: bold;
+cursor: pointer;
+}
+
+.container .btn:hover {
+background-color: skyblue;
+}
+.whiteButton {
+position: absolute;
+top: 0px;
+right: 0px;
+display: flex;
+}
+.whitebutton {
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor: default;
+overflow: hidden;
+outline:none;
+font-size:0.25em;
+}
+body {
+background-image: url('mountain.png');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover; 
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.f-newest {
+background-color:#79ceea;
+text-align:center; 
+border-radius: 5px;
+}
+
+.is-hidden { display: none; }
+
+.dark-mode {
+  color: white;
+  background-image: url('');
+  background-color: black;
+}
+.dark-mode .container .btn{
+background-color: black;
+}
+.dark-mode .container .btn:hover {
+background-color: grey;
+}
+.dark-mode .f-newest{
+background-color:grey;
+}
+
+.fiveGrid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
+</head>
+<body>
+<h1>Mountain Game Games</h1>
+
+<p>(To make it easier to find for next time drag the names up to the bookmarks bar.)</p>
+
+<div id="5new" class="f-newest">
+<h3>5 Newest Games</h3>
+
+<div id="5newHolder" class='fiveGrid'>
+
+</div>
+</div>
+
+<div class="fiveGrid">
+<div class="container">
+<img src="other.png" alt="Others" style="width:100%">
+<button class="btn"><a href="Others">Others</a></button>
+</div>
+
+<div class="container " data-intro='Added new ways to make a suggestion!'>
+<img src="vector.gif" alt="Suggestions" style="width:100%">
+<button class="btn"><a href="suggestions.html">Suggestions</a></button>
+</div>
+<div class="container">
+<button class="btn"><a href="privacyPolicy.html">Privacy Policy</a></button>
+</div>
+</div>
+
+<div id='livechat' style='
+background-color:skyblue;
+font-size: 16px;
+padding: 12px 24px;'>
+<h3>Live Chat</h3>
+<p>Chat with everyone on the site!</p>
+<div id='chat'></div>
+</div>
+<br><br>
+<div style='font-size:20px; float:left; position:absolute;'>
+<label for="searchbox">Search Games:</label>
+<input
+type="search"
+oninput="liveSearch()"
+id="searchbox"
+style='border-radius: 5px;font-size:20px;'
+>
+</div>
+<br><br>
+
+<div class="whiteButton">
+<input class="whitebutton" type="button" onclick="location.href='zPass.html';" value=" . " />
+</div>
+
+<img src='https://www.free-website-hit-counter.com/c.php?d=9&id=131905&s=10' border='0' alt='' width="0px">
+<img src="//www.clustrmaps.com/map_v2.png?d=N4d3fSjmXm-Tu2ycA8C1o5NqGTG8jdd1ZdiF5jTxqKY&cl=ffffff" border='0' alt='' width="0px">
+
+<script src='https://unpkg.com/intro.js/minified/intro.min.js'></script>
+<script>
+function getRandomInt(min, max) {
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var rick = getRandomInt(1, 100)
+
+if ((rick == 1)) {
+window.location="zzz.html";
+}
+
+	if (localStorage.suggestionsNew) {
+localStorage.suggestionsNew = Number(localStorage.suggestionsNew)+1;
+} else {
+localStorage.suggestionsNew = 0;
+}
+if (Number(localStorage.suggestionsNew) >= 5) {}else{
+introJs().start();
+}
+
+function liveSearch() {
+  let cards = document.querySelectorAll('.container')
+  let search_query = document.getElementById("searchbox").value;
+  for (var i = 0; i < cards.length; i++) {
+    if(cards[i].innerText.toLowerCase()
+      .includes(search_query.toLowerCase())) {
+        cards[i].classList.remove("is-hidden");
+    } else {
+      cards[i].classList.add("is-hidden");
+    }
+  }
+}
+
+	function joinChat() {
+document.getElementById('chat').innerHTML = ("<iframe width='99%' height = '400px' src="
++"'https://50db9992-8128-4ea6-b56c-ed425ab84e8e.id.repl.co/'></iframe>");
+}
+joinChat();
+
+function displayGames() {
+for (let i = 0; i < g.length; i++) {
+var uniName = (g[i].n);
+uniName = uniName.toLowerCase();
+uniName = uniName.replace(/\s/g, '');
+var smallN = (g[i].sn || uniName);
+var img = (g[i].m || (smallN+'.png'));
+var desc = (g[i].d || '');
+function f() {if (g[i].f) {return (g[i].f+'/')} else {return ''}}
+function s() {if (g[i].h) {return (g[i].h)} else {return '.html'}}
+var subFolder = (f());
+var gC = document.createElement("div");
+gC.classList.add("container");
+gC.innerHTML = '<span style="font-size:0px;">'+desc+'</span><img src="'+img+'" alt="'+g[i].n+'" style="width:100%"><button class="btn"><a href="'+subFolder+smallN+s()+'">'+g[i].n+'</a></button>';
+if (i < g.length-5) {
+document.body.appendChild(gC);
+ }else{
+document.body.appendChild(gC);
+var gCNewest = gC.cloneNode(true);
+document.getElementById('5newHolder').appendChild(gCNewest);
+  }
+ }
+}
+
+var g = [
+{
+n : 'The Mountain Game',
+sn : 'mountain',
+m : 'mountainNoFade.png',
+d : 'idle clicker',
+ },
+{
+n : 'Retro Bowl',
+sn : 'retro',
+m : 'retrobowl.png',
+d : 'sports football',
+ },
+{
+n : 'Slope',
+sn : 'slope',
+ },
+{
+n : 'Tube Jumpers',
+sn : 'jumpers',
+m : 'tube-jumpers.png',
+ },
+{
+n : '2048',
+d : 'puzzle',
+ },
+{
+n : 'Tetris',
+d : 'puzzle',
+ },
+{
+n : 'Tom And Jerry',
+sn : 'tandj',
+m : 'tom-and-jerry.png',
+d : 'simple',
+ },
+{
+n : 'Geometry Dash 1 & 2',
+sn : 'dashHome',
+m : 'geometry-dash.png',
+d : 'jumping run',
+f : 'dash'
+ },
+{
+n : 'Duck Life 1-4',
+sn : 'duckLifeHome',
+m : 'duck-life.png',
+d : 'run pet',
+f : 'duckLife'
+ },
+{
+n : 'Flood Runner',
+sn : 'floodRunner',
+m : 'flood-runner.png',
+ },
+{
+n : 'Electro Man',
+sn : 'ElectroMan',
+m : 'electric-man.png',
+ },
+{
+n : 'World\'s Hardest Game',
+sn : 'WorldsHardestGame',
+m : 'worlds-hardest-game.png',
+ },
+{
+n : '1 on 1 Soccer',
+sn : '1v1Soccer',
+m : '1-on-1-soccer.png',
+d : 'sports',
+ },
+{
+n : 'Chess',
+d : 'board',
+ },
+{
+n : 'Snake',
+d : 'google',
+ },
+{
+n : 'Cookie Clicker',
+sn : 'cookie',
+ },
+{
+n : 'T-rex Game',
+sn : 't-rex-game',
+h : '/',
+m : 't-rex.jpeg'
+ },
+{
+n : 'Madalin Stunt Cars 2',
+sn : 'StuntCars',
+m : 'madalin-stunt-cars-2.jpeg',
+d : 'cars'
+ },
+{
+n : '10 More Bullets',
+sn : '10moreBullets',
+m : '10.png',
+ },
+{
+n : 'Burrito Bison',
+sn : 'BurritoBison',
+m : 'burrito.png',
+ },
+{
+n : 'Moto-X3M 1 & 4',
+sn : 'motox3mhome',
+m : 'moto-x3m.png',
+ },
+{
+n : 'Tunnel Rush',
+sn : 'Tunnel-Rush',
+m : 'tunnelrush.png',
+ },
+{
+n : 'Google Baseball',
+sn : 'Google-Baseball',
+m : 'google-baseball.png',
+ },
+{
+n : 'Drift Hunters',
+sn : 'Drift-Hunters',
+m : 'drift-hunters.png',
+ },
+{
+n : 'Fireboy And Watergirl',
+sn : 'Fire-Boy-Water-Girl',
+h : '/',
+m : 'firewater.png',
+ },
+{
+n : 'Big Tower Tiny Square',
+sn : 'BigTowerTinySquare',
+m : 'TinySquare.png',
+ },
+{
+n : 'Basketball Stars',
+sn : 'Basket-Ball-Stars',
+m : 'basketballstars.png',
+ },
+{
+n : 'Deepest Sword',
+ },
+ {
+n : 'Stickman Climb 1&2',
+sn : 'stickmanclimbmain',
+m : 'stickmanclimb.png',
+ },
+ {
+n : 'Just Flip',
+ },
+  {
+n : 'Idle Miner',
+ },
+  {
+n : 'Launchball',
+ },
+  {
+n : 'Paper.io 2',
+sn : 'paperio2',
+ },
+   {
+n : 'Air Hockey',
+ },
+{
+n : 'Wordle',
+ },
+ {
+n : 'Pacman',
+ },
+  {
+n : 'The Oregon Trail',
+sn : 'theoregontrial',
+ },
+  {
+n : 'Mountain Maze',
+ },
+  {
+n : 'Stack',
+ },
+  {
+n : 'Rolling Forests',
+sn : 'forests',
+ },
+  {
+n : 'Run 3',
+ },
+  {
+n : 'Snowball Fight',
+ },
+  {
+n : 'Raft Wars 1 & 2',
+sn : 'raftwarshome',
+m : 'raftwars.png',
+ },
+   {
+n : 'Game Inside A Game',
+ },
+   {
+n : 'There Is No Game',
+ },
+  {
+n : 'Economical 1 & 2',
+sn : 'economicalhome',
+m : 'economical.png',
+ },
+   {
+n : 'Cell Machine',
+ },
+   {
+n : 'Cat Ninja',
+ },
+   {
+   /*/Typo is on purpose /*/
+n : 'Celseste',
+sn : 'celeste',
+ },
+   {
+n : 'Subway Surfers',
+ },
+   {
+n : 'Edge Not Found',
+ },
+   {
+n : 'Cubefield',
+ },
+   {
+n : 'Radius Raid',
+ },
+   {
+n : 'Papery Planes',
+ },
+   {
+n : 'Swerve',
+ },
+];
+
+displayGames();
+</script>
+</body>
+</html>
